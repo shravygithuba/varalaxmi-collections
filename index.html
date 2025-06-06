@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Varalaxmi Collections</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="whatsapp.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css"/>
+  <!-- Google Fonts -->
+
+
+
+  <style>
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .shop-button {
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .shop-button:hover {
+      transform: scale(1.05);
+      background: #c2185b;
+      color: #fff;
+    }
+
+    .hero-image {
+      transition: transform 1s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02) rotate(1deg);
+    }
+  </style>
+</head>
+<body>
+
+  <header data-aos="fade-down">
+    <nav class="navbar">
+      <div class="logo" data-aos="fade-right">Varalaxmi Collections</div>
+      <ul class="nav-links">
+        <li data-aos="fade-down" data-aos-delay="100"><a href="index.html">Home</a></li>
+        <li class="dropdown" data-aos="fade-down" data-aos-delay="200">
+          <a href="#">Shop</a>
+          <ul class="dropdown-menu">
+            <select class="dropdown-menu">Shop</select>
+            <option>Daily wear sarees</option>
+            <option>Fancy sarees</option>
+            <option>Pattu sarees</option>
+            <option>Computer Work Blouses</option>
+          </ul>
+        </li>
+        <li data-aos="fade-down" data-aos-delay="300"><a href="about.html">About</a></li>
+        <li data-aos="fade-down" data-aos-delay="400"><a href="contact.html">Contact</a></li>
+        <li data-aos="fade-down" data-aos-delay="500"><a href="#">Track Order</a></li>
+        <li data-aos="fade-down" data-aos-delay="600"><a href="login.html">Login</a></li>
+      </ul>
+      <div class="hamburger" data-aos="fade-left">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+ 
+
+
+
+
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-text">
+      <h1 data-aos="fade-up" data-aos-delay="100">Celebrate Tradition with Elegance</h1>
+      <p data-aos="fade-up" data-aos-delay="200">Handpicked sarees that echo timeless beauty.</p>
+      <a href="products.html" class="shop-button" data-aos="zoom-in" data-aos-delay="300">Explore Collection</a>
+    </div>
+    <img src="Images/saree2.jpg" class="hero-image" alt="Featured Saree" data-aos="fade-left" data-aos-delay="400">
+  </section>
+
+  <!-- Chatbot Icon -->
+  <div id="chatbot-icon" onclick="toggleChat()" data-aos="zoom-in-up" title="Chat with us">
+    💬
+  </div>
+
+  <!-- Chat Window -->
+  <div id="chat-window" data-aos="fade-up">
+    <div id="chat-header">Hi! Need Help?</div>
+    <div id="chat-messages"></div>
+    <input type="text" id="chat-input" placeholder="Ask your question..." onkeypress="handleKeyPress(event)" />
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919441546906" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp" data-aos="zoom-in-up" data-aos-delay="500">
+    <img src="Images/whatsapp.jpg" alt="WhatsApp" />
+  </a>
+
+  <footer class="footer" data-aos="fade-up">
+    <p>&copy; 2025 Varalaxmi Collections | Follow us on 
+      <a href="https://www.instagram.com/varalaxmi_saree_collection_?igsh=c2YwNjEzZGE2am8=">Instagram</a>
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="whatsapp.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const chatWindow = document.getElementById('chat-window');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+
+    const responses = {
+      "how to place order": "Click on a product, select quantity, and click 'Add to Cart'. Then go to 'Cart' and place the order.",
+      "payment options": "We accept UPI, credit/debit cards, and Cash on Delivery.",
+      "delivery time": "Orders are delivered within 3–7 business days.",
+      "return policy": "Returns are accepted within 7 days if the item is unused.",
+      "contact": "You can email us at varalaxmicollections@gmail.com or WhatsApp us."
+    };
+
+    function toggleChat() {
+      chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') {
+        const userInput = chatInput.value.trim().toLowerCase();
+        if (!userInput) return;
+        appendMessage("You", chatInput.value);
+        const reply = responses[userInput] || "Sorry, I didn't understand. Please contact our support.";
+        appendMessage("Bot", reply);
+        chatInput.value = "";
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement("div");
+      msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
